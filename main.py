@@ -7,20 +7,21 @@ def main():
 
     # Create the display surface (the screen)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    player_start_pos = pygame.Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-    player = Player(player_start_pos)
+    
+    # Initialize player in center of screen
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+    player = Player(x, y)
 
     print('Starting asteroids!')
     print(f'Screen width: {SCREEN_WIDTH}')
     print(f'Screen height: {SCREEN_HEIGHT}')
-
     
     clock = pygame.time.Clock()
     dt = 0
 
     while True:
         for event in pygame.event.get():
-            
             if event.type == pygame.QUIT:
                 return  # Exit the program
 
