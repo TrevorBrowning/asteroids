@@ -8,6 +8,10 @@ def main():
     # Create the display surface (the screen)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     # Initialize player in center of screen
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
@@ -20,15 +24,21 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return  # Exit the program
             
-        player.update(dt)   
+        
+            
+        updatable.update(dt)   
+
+        
 
         screen.fill((0, 0, 0))  
-        player.draw(screen)
+        drawable.draw(screen)
 
         pygame.display.flip() 
         dt = clock.tick(60) / 1000
